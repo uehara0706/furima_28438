@@ -18,13 +18,13 @@
    Association
 
  has_many :items
- has_one :address
  has_one :purchase
 
 ## items テーブル
 
 | Column          | Type    | Options                        |
 | --------------- | ------  | ------------------------------ |
+| name            | string  | null: false                    |
 | price           | integer | null: false                    |
 | cate            | integer | null: false                    |
 | state           | integer | null: false                    |
@@ -33,11 +33,10 @@
 | burden          | integer | null: false, foreign_key: true |
 | ship-from       | integer | null: false, foreign_key: true |
 | Shipping-days   | integer | null: false, foreign_key: true |
-| user_id         | integer | null: false, foreign_key: true  | 
+| user_id         | integer | null: false, foreign_key: true | 
   Association
 
 belongs_to :user
-has_one :address
 has_one :purchase
 ## address テーブル
 
@@ -46,12 +45,13 @@ has_one :purchase
 | municipalities   | string  | null: false |
 | street_number    | string  | null: false |
 | building_number  | string  | null: true  |
-| telephone_number | integer | null: false |
-| zip_code         | integer | null: false |
+| telephone_number | string  | null: false |
+| zip_code         | string  | null: false |
 | province         | integer | null: false |
 Association
 belongs_to :user
 belongs_to :item
+belongs_to :purchase
 
 ## purchase テーブル
 
@@ -63,6 +63,7 @@ belongs_to :item
 
 belongs_to :user
 belongs_to :item
+has_one :address
 
 
 

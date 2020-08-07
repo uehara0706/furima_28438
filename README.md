@@ -4,64 +4,53 @@
 
 ## users テーブル
 
-| Column     | Type   | Options     |
-| ----------- | ------| ------------ |
-| nickname   | string | null: false |
-| 姓          | string | null: false |
-| 名          | string | null: false | 
-| 姓（フリガナ）| string | null: false |
-| 名（フリガナ）| string | null: false |
-| birth day   | integer| null: false |
+| Column       | Type   | Options     |
+| ------------ | ------| ------------ |
+| nickname     | string | null: false |
+| Last Name    | string | null: false |
+| First Name   | string | null: false | 
+| Last Name-f  | string | null: false |
+| First Name-f | string | null: false |
+| birth day   | date   | null: false |
 | email       | string | null: false |
 | password    | string | null: false |
 
- 
- 
- 
- 
- 
-  Association
+   Association
 
  has_many :items
- has_one :address
+ has_one :purchace
  
 
 ## items テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| price           | integer| null: false |
-| exhibitorname   | string | null: false |
-| cate            | string | null: false |
-| state           | string | null: false |
-| images          | image  | null: false |
-| explain         | text   | null: false |
-| burden          | string | null: false |
-| Ship-From       | string | null: false |
-| Shipping-days   | integer| null: false 
+| Column          | Type    | Options     |
+| --------------- | ------  | ----------- |
+| price           | integer | null: false |
+| exhibitorname   | string  | null: false |
+| cate            | integer | null: false |
+| state           | integer | null: false |
+| images          | image   | null: false |
+| explain         | text    | null: false |
+| burden          | integer | null: false |
+| Ship-From       | integer | null: false |
+| Shipping-days   | integer | null: false 
+  
   Association
 
 belongs_to :user
 
-## address テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| adsress         | text   | null: false |
+## purchace テーブル 
 
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| purchacername    | references | null: false, foreign_key: true |
+| shipping address | references | null: false, foreign_key: true |
+| adsress          | text       | null: false, foreign_key: ture |          |
 
-bbelongs_to :user
+Association
 
-
-
-
-
-
-
-
-
-
-
+belongs_to :user
 
 
 

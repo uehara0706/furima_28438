@@ -7,10 +7,10 @@
 | Column       | Type   | Options     |
 | ------------ | ------| ------------ |
 | nickname     | string | null: false |
-| Last_Name    | string | null: false |
-| First_Name   | string | null: false | 
-| Last_Name-f  | string | null: false |
-| First_Name-f | string | null: false |
+| last_name    | string | null: false |
+| first_name   | string | null: false | 
+| last_name-f  | string | null: false |
+| first_name-f | string | null: false |
 | birth_day   | date   | null: false |
 | email       | string | null: false |
 | password    | string | null: false |
@@ -32,7 +32,7 @@
 | images          | image   | null: false |
 | explain         | text    | null: false |
 | burden          | integer | null: false |
-| Ship-From       | integer | null: false |
+| ship-from       | integer | null: false |
 | Shipping-days   | integer | null: false |
 | user-id         | string | null: false | 
   Association

@@ -26,7 +26,6 @@
 | Column          | Type    | Options                        |
 | --------------- | ------  | ------------------------------ |
 | price           | integer | null: false                    |
-| exhibitorname   | string  | null: false                    |
 | cate            | integer | null: false                    |
 | state           | integer | null: false                    |
 | images          | image   | null: false                    |
@@ -34,7 +33,7 @@
 | burden          | integer | null: false, foreign_key: true |
 | ship-from       | integer | null: false, foreign_key: true |
 | Shipping-days   | integer | null: false, foreign_key: true |
-| user_id         | string | null: false, foreign_key: true  | 
+| user_id         | integer | null: false, foreign_key: true  | 
   Association
 
 belongs_to :user
@@ -46,7 +45,7 @@ has_one :purchase
 | ---------------- | ------  | ----------  |
 | municipalities   | string  | null: false |
 | street_number    | string  | null: false |
-| building_number  | string  | null: ture  |
+| building_number  | string  | null: true  |
 | telephone_number | integer | null: false |
 | zip_code         | integer | null: false |
 | province         | integer | null: false |
@@ -57,10 +56,10 @@ belongs_to :item
 ## purchase テーブル
 
 
-| Column  | Type   | Options    |
-| ------- | ------ | ---------- |
-| user_id | string | null: false|
-| item_id | string | null: false|
+| Column  | Type    | Options    |
+| ------- | ------- | ---------- |
+| user_id | integer | null: false|
+| item_id | integer | null: false|
 
 belongs_to :user
 belongs_to :item

@@ -18,8 +18,8 @@
    Association
 
  has_many :items
- has_one :addless
- has_one :purchace
+ has_one :address
+ has_one :purchase
 
 ## items テーブル
 
@@ -34,25 +34,27 @@
 | burden          | integer | null: false, foreign_key: true |
 | ship-from       | integer | null: false, foreign_key: true |
 | Shipping-days   | integer | null: false, foreign_key: true |
-| user-id         | string | null: false, foreign_key: true  | 
+| user_id         | string | null: false, foreign_key: true  | 
   Association
 
 belongs_to :user
-has_one :addless
-has_one :purchace
-## addless テーブル
+has_one :address
+has_one :purchase
+## address テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------  |
-| municipalities  | string | null: false |
-| street_number   | string | null: false |
-| building_number | strinf | null: ture  |
-
+| Column           | Type    | Options     |
+| ---------------- | ------  | ----------  |
+| municipalities   | string  | null: false |
+| street_number    | string  | null: false |
+| building_number  | string  | null: ture  |
+| telephone_number | integer | null: false |
+| zip_code         | integer | null: false |
+| province         | integer | null: false |
 Association
 belongs_to :user
 belongs_to :item
 
-## purchace テーブル
+## purchase テーブル
 
 
 | Column  | Type   | Options    |

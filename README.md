@@ -4,45 +4,53 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
+| Column     | Type   | Options     |
+| ----------- | ------| ------------ |
+| nickname   | string | null: false |
+| 姓          | string | null: false |
+| 名          | string | null: false | 
+| 姓（フリガナ）| string | null: false |
+| 名（フリガナ）| string | null: false |
+| birth day   | integer| null: false |
+| email       | string | null: false |
+| password    | string | null: false |
 
+ 
+ 
+ 
+ 
+ 
   Association
 
  has_many :items
- has_a :purchace
+ has_one :address
+ 
 
 ## items テーブル
 
 | Column          | Type   | Options     |
 | --------------- | ------ | ----------- |
-| itemname        | string | null: false |
 | price           | integer| null: false |
 | exhibitorname   | string | null: false |
 | cate            | string | null: false |
-
+| state           | string | null: false |
+| images          | image  | null: false |
+| explain         | text   | null: false |
+| burden          | string | null: false |
+| Ship-From       | string | null: false |
+| Shipping-days   | integer| null: false 
   Association
 
-has_a :purchace
 belongs_to :user
 
+## address テーブル
 
-## purchace テーブル
-
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| purchacername    | references | null: false, foreign_key: true |
-| shipping address | references | null: false, foreign_key: true |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| adsress         | text   | null: false |
 
 
-  Association
-
- belongs_to :user
- belong_to :item 
-
+bbelongs_to :user
 
 
 

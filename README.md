@@ -7,18 +7,18 @@
 | Column       | Type   | Options     |
 | ------------ | ------| ------------ |
 | nickname     | string | null: false |
-| Last Name    | string | null: false |
-| First Name   | string | null: false | 
-| Last Name-f  | string | null: false |
-| First Name-f | string | null: false |
-| birth day   | date   | null: false |
+| Last_Name    | string | null: false |
+| First_Name   | string | null: false | 
+| Last_Name-f  | string | null: false |
+| First_Name-f | string | null: false |
+| birth_day   | date   | null: false |
 | email       | string | null: false |
 | password    | string | null: false |
 
    Association
 
  has_many :items
- has_one :purchace
+ has_one :addless
  
 
 ## items テーブル
@@ -33,27 +33,23 @@
 | explain         | text    | null: false |
 | burden          | integer | null: false |
 | Ship-From       | integer | null: false |
-| Shipping-days   | integer | null: false 
-  
+| Shipping-days   | integer | null: false |
+| user-id         | string | null: false | 
   Association
 
 belongs_to :user
+has_one :addless
+## addless テーブル
 
-
-## purchace テーブル 
-
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| purchacername    | references | null: false, foreign_key: true |
-| shipping address | references | null: false, foreign_key: true |
-| adsress          | text       | null: false, foreign_key: ture |          |
+| Column  | Type   | Options    |
+| ------- | ------ | ---------- |
+| addless | string | null: false|
+| user-id | string | null: false|
+| item-id | string | null: false|
 
 Association
-
 belongs_to :user
-
-
-
+belongs_to :item
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

@@ -82,5 +82,37 @@ describe User, type: :model do
       user.valid?
       expect(user.errors[:first_name_kana]).to include("はカタカナで入力してください")
     end
+    it "nicknameがあれば登録できる" do
+      @user.nickname = "aaaaaa"
+      expect(@user).to be_valid
+    end
+    it "passwordが6文字以上で英数字を含んでいれば登録できる" do
+      @user.password = "aaa111"
+      @user.password_confirmation = "aaa111"
+      expect(@user).to be_valid
+    end
+    it "メールアドレスが＠を含んでいれば登録できる"
+     @user.email = "aa@aa.com"  
+     expect(@user).to be_valid
+    end
+    it "first_nameがあれば登録できる"
+     @user.first_name = "あ"
+     expect(@user).to be_valid
+    it "last_nameがあれば登録できる"
+     @user.last_name = "あ"
+     expect(@user).to be_valid
+    end
+    it "first_name_kanaがカナであれば登録できる"
+     @user.first_name_kana = "ア"
+     expect(@user).to be_valid
+    end
+    it "last_name_kanaがカナであれば登録できる"
+     @user.last_name_kana = "ア"
+     expect(@user).to be_valid
+    end
+    it "birth_dateがあれば登録できる"
+     @user.birth_date = "1930/1/1"
+     expect(@user).to be_valid
+  end
   end
 end

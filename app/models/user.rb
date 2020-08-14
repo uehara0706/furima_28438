@@ -11,7 +11,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: {case_sensitive: false},
                     format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
   validates :password, length: {minimum: 6}
-                       format: {with: /\A[a-z0-9]+\z/i}
   validates :password_confirmation
   validates :birth_date
 
@@ -24,4 +23,4 @@ class User < ApplicationRecord
        validates :last_name_kana
      end
    end
- 
+end

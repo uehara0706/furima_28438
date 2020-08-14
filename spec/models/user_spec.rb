@@ -15,12 +15,22 @@ describe User, type: :model do
       @user.valid?
       expect(user.errors.full_messages).to include("Email can't be blank")
     end
+    it "emailに＠が含まれてないと登録できない"
+      @user.email = "aaa.com"
+      @user.valid?
+      expect(user.errors.full_messages).to include("Email can't be excluded @")
+  end
     it "passwordが空だと登録できない" do
       @user.password = ""
       @user.valid?
       expect(user.errors.full_messages).to include("Password can't be blank")
     end
-    it "passwordの確認が空だと登録できない" do
+   it "passwordに英数字が含まれてないと登録できない"
+     @user.password = "aaaaaa"
+     @user.valid?
+     expect(user.errors.full_messages).to include("Password can't be contain alphanumeric characters")
+  end
+     it "passwordの確認が空だと登録できない" do
       @user.password_confirmation = ""
       @user.valid?
       expect(user.errors.full_messages).to include("Password_confirmation can't be blank")
@@ -49,6 +59,28 @@ describe User, type: :model do
       @user.birth_date = ""
       @user.valid?
       expect(user.errors.full_messages).to include("Birth_date can't be blank")
+    end
+    it "重複したemailが存在する場合登録できない" do
+      @user.save
+      @another_user.email = @user.email
+      @another_user.valid?
+      expect(another_user.errors.full_messages).to include("Email has already been taken")
+    end
+    it "passwordが5文字以下であれば登録できない" do
+      @user.password = "00000"
+      @user.password_confirmation = "00000"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+    end
+    it 'last_name_kanaがカタカナでないと登録できない' do
+      user = build(:user, last_name_kana: "kana")
+      user.valid?
+      expect(user.errors[:last_name_kana]).to include("はカタカナで入力してください")
+    end
+    it 'first_name_kanaがカタカナでないと登録できない' do
+      user = build(:user, first_name_kana: "kana")
+      user.valid?
+      expect(user.errors[:first_name_kana]).to include("はカタカナで入力してください")
     end
   end
 end

@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_115808) do
     t.string "last_name"
     t.string "first_name_kana"
     t.string "last_name_kana"
-    t.string "birth_date"
+    t.date "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -11,9 +11,9 @@
 | first_name   | string | null: false | 
 | last_name-f  | string | null: false |
 | first_name-f | string | null: false |
-| birth_day   | date   | null: false |
-| email       | string | null: false |
-| password    | string | null: false |
+| birth_day    | date   | null: false  |
+| email        | string | null: false  |
+| password     | string | null: false  |
 
    Association
 
@@ -28,11 +28,11 @@
 | price           | integer | null: false                    |
 | cate            | integer | null: false                    |
 | state           | integer | null: false                    |
-| images          | image   | null: false                    |
+| images          | text    | null: false                    |
 | explain         | text    | null: false                    |
 | burden          | integer | null: false, foreign_key: true |
-| ship-from       | integer | null: false, foreign_key: true |
-| Shipping-days   | integer | null: false, foreign_key: true |
+| ship_from       | integer | null: false, foreign_key: true |
+| Shipping_days   | integer | null: false, foreign_key: true |
 | user_id         | integer | null: false, foreign_key: true | 
   Association
 

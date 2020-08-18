@@ -3,14 +3,14 @@ class CreateItems < ActiveRecord::Migration[6.0]
     create_table :items do |t|
       t.string :name
       t.integer :price
-      t.integer :cate
-      t.integer :state
+      t.integer :cate_id
+      t.integer :state_id
       t.text :images
       t.text :explain
-      t.integer :burden
-      t.integer :ship_form
-      t.integer :Shipping_days  
-      t.integer :user_id   
+      t.integer :burden_id
+      t.integer :ship_form_id
+      t.integer :shipping_days_id
+      t.integer :user_id
       t.timestamps
     end
   end

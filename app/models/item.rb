@@ -11,7 +11,7 @@ validates :cate_id
 validates :state_id
 validates :burden_id
 validates :ship_from_id
-validates :Shipping_days_id
+validates :shipping_days_id
 validates :cate_id, numericality: { other_than: 1 } 
 validates :burden_id, numericality: { other_than: 1 } 
 validates :state_id, numericality: { other_than: 1 } 

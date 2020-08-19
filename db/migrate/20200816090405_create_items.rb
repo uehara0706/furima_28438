@@ -5,7 +5,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :price
       t.integer :cate_id
       t.integer :state_id
-      t.text :images
       t.text :explain
       t.integer :burden_id
       t.integer :ship_form_id

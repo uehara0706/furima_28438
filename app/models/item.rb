@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :cate
+  belongs_to :user
+  has_one_attached :image
 
 with_options presence: true do
 
@@ -10,7 +11,7 @@ validates :explain
 validates :cate_id
 validates :state_id
 validates :burden_id
-validates :ship_from_id
+validates :ship_form_id
 validates :shipping_days_id
 validates :cate_id, numericality: { other_than: 1 } 
 validates :burden_id, numericality: { other_than: 1 } 

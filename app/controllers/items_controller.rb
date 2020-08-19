@@ -9,8 +9,10 @@ class ItemsController < ApplicationController
   end
 
   def create
+   
+    # Item.create(item_params)
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to root_path
     else
       render :new
@@ -21,8 +23,8 @@ class ItemsController < ApplicationController
 
   private
 
-  def article_params
-    params.require(:item).permit(:name,:explain,:price,:images,:cate_id,:state_id,:burden_id,:ship_form_id,:shipping_days_id)
+  def item_params
+    params.require(:item).permit(:name,:explain,:price,:image,:cate_id,:state_id,:burden_id,:ship_form_id,:shipping_days_id).merge(user_id: current_user.id)
   end
   
   def move_to_index

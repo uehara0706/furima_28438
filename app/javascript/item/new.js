@@ -1,12 +1,12 @@
 $(function () {
-  var rate = 0.1;
+  let rate = 0.1;
   $('#item-price').on('change', function () {
-    var str = $(this).val();
+    let str = $(this).val();
 
 
-    var itemPrice = Number(str);
-    var addTaxPrice = Math.round(itemPrice * rate);
-    var profit = itemPrice - addTaxPrice;
+    let itemPrice = Number(str);
+    let addTaxPrice = Math.round(itemPrice * rate);
+    let profit = itemPrice - addTaxPrice;
     $('#add-tax-price').text(addTaxPrice);
     $('#profit').text(profit);
   });

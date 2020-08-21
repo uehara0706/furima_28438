@@ -23,37 +23,37 @@ RSpec.describe Item, type: :model do
     it "cate_idが1だと登録できない" do
       @item.cate_id = "1"
       @item.valid?
-      expect(@item.errors.full_messages).to include("User must exist", "Cate must be other than 1")
+      expect(@item.errors.full_messages).to include("Cate must be other than 1")
     end
     it "state_idが1だと登録できない" do
       @item.state_id = "1"
       @item.valid?
-      expect(@item.errors.full_messages).to include("User must exist", "State must be other than 1")
+      expect(@item.errors.full_messages).to include("State must be other than 1")
     end
     it "burden_idが1だと登録できない" do
       @item.burden_id = "1"
       @item.valid?
-      expect(@item.errors.full_messages).to include("User must exist", "Burden must be other than 1")
+      expect(@item.errors.full_messages).to include("Burden must be other than 1")
     end
     it "ship_form_idが1だと登録できない" do
       @item.ship_form_id = "1"
       @item.valid?
-      expect(@item.errors.full_messages).to include("User must exist", "Ship form must be other than 1")
+      expect(@item.errors.full_messages).to include("Ship form must be other than 1")
     end
     it "shipping_days_idが1だと登録できない" do
       @item.shipping_days_id = "1"
       @item.valid?
-      expect(@item.errors.full_messages).to include("User must exist", "Shipping days must be other than 1")
+      expect(@item.errors.full_messages).to include("Shipping days must be other than 1")
     end
     it "priceが299以下だと登録できない" do
-      @item.price = "100"
+      @item.price = "299"
       @item.valid?
-      expect(@item.errors.full_messages).to include("User must exist", "Price must be greater than or equal to 300")
+      expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
     end
     it "priceが10000000以上だと登録できない" do
       @item.price = "10000000"
       @item.valid?
-      expect(@item.errors.full_messages).to include("User must exist", "Price must be less than or equal to 9999999")
+      expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
     end
     it "nameがあれば登録できる" do
       @item.name = "あ"

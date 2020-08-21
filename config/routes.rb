@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'items/new', to: 'items#new'
   post 'items/new', to: 'items#new'
   resources :items
+  
 end

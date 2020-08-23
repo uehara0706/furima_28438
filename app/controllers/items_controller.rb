@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   
   def index 
+    @items = Item.all.order("created_at DESC")
+  end
   end
 
   def new
@@ -32,4 +34,3 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
-end

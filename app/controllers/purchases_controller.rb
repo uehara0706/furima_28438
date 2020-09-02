@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_new_user_session
+  before_action :move_to_root_path,
 def index
   @item = Item.find(params[:item_id])
 end
@@ -31,10 +32,18 @@ private
     )
   end
  
-  def move_to_index
+  def move_to_new_user_session
     unless user_signed_in?
-      redirect_to action: :index
+      redirect_to new_user_session_path
     end
   end
+
+  def move_to_root_path
+    item =Item.find(params[:item_id])
+    if user_signed_in? && current_user.id == item.user.id
+      redirect_to root_path
+    end
+  end
+
 
 end

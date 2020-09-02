@@ -2,6 +2,7 @@ class PurchasesController < ApplicationController
   before_action :move_to_new_user_session
   before_action :move_to_root_path,
 def index
+  @purchase = Purchase.new
   @item = Item.find(params[:item_id])
 end
 

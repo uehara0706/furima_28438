@@ -1,27 +1,52 @@
 class PurchasesController < ApplicationController
-  before_action :move_to_new_user_session
-  before_action :move_to_root_path,
-def index
-  @purchase = Purchase.new
-  @item = Item.find(params[:item_id])
-end
+  before_action :move_to_new_user_session_purchase
+  before_action :move_to_root_path_purchase
+  before_action :move_to_root_path_item_purchase
+  before_action :set_item
 
-def create
-  @item = Item.find(params[:item_id])
-  @purchase = PurchaseAddress.new(order_params)
-  if @purchase.valid?
-    pay_item
-    @purchase.save
-    return redirect_to root_path
-  else
-    render 'index'
+  def index
+    
   end
-end
 
-private
+  def create
+    @purchase = PurchaseAddress.new(order_params)
+    if @purchase.valid?
+      pay_item
+      @purchase.save
+      return redirect_to root_path
+    else
+      render 'index'
+    end
+  end
+
+  private
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def move_to_new_user_session_purchase
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
+  end
+
+  def move_to_root_path_purchase
+    item =Item.find(params[:item_id])
+    if user_signed_in? && current_user.id == item.user.id
+      redirect_to root_path
+    end
+  end
+
+  def move_to_root_path_item_purchase
+    item =Item.find(params[:item_id])
+    if item.purchase != nil 
+      redirect_to root_path
+    end
+  end
 
   def order_params
-    params.require(:purchase_address).permit(:token, :zip_code, :province, :municipalies, :street_number, :building_number, :telephone_number)
+    params.require(:purchase_address).permit(:token, :zip_code, :province, :municipalies, :street_number, :building_number, :telephone_number).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
   def pay_item
@@ -31,19 +56,6 @@ private
       card: order_params[:token],    
       currency:'jpy'                 
     )
-  end
- 
-  def move_to_new_user_session
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
-  end
-
-  def move_to_root_path
-    item =Item.find(params[:item_id])
-    if user_signed_in? && current_user.id == item.user.id
-      redirect_to root_path
-    end
   end
 
 

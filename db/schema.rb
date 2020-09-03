@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_054529) do
     t.string "telephone_number"
     t.string "zip_code"
     t.integer "province"
+    t.integer "purchase_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

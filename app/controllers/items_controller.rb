@@ -15,15 +15,12 @@ class ItemsController < ApplicationController
 
   def create
    
-    # Item.create(item_params)
     @item = Item.new(item_params)
-    if @item.save!
+    if @item.save
       redirect_to root_path
     else
       render :new
     end
-  
-    
   end
 
   def show
